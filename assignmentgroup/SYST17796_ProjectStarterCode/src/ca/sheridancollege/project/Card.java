@@ -1,25 +1,56 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
 package ca.sheridancollege.project;
 
-/**
- * A class to be used as the base Card class for the project. Must be general enough to be instantiated for any Card
- * game. Students wishing to add to the code should remember to add themselves as a modifier.
- *
- * @author NAFK group FEb07,2022
- */
-public abstract class Card {
-    //default modifier for child classes
+public class Card {
+    
+   private int value;
+    private int suit;
+   
+    private int position;
+    private static String[] ranks = {"Joker","Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King"};
+private static String[] suits = {"Clubs","Diamonds","Hearts","Spades"};
+  
+    
+    Card(int suit, int values)
+    {
+        this.position=values;
+        this.suit=suit;
+    }
+    
+    public String toString()
+    {
+        return ranks[position]+" of "+suits[suit];
+    }
+    
+    public int getrank()
+    {
+        return position;
+    }
 
-    /**
-     * Students should implement this method for their specific children classes
-     *
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
-    @Override
-    public abstract String toString();
-
+    
+    public int getsuit()
+    {
+        return suit;
+    }
+    
+    public int getvalue()
+    {
+        if(position>10)
+        {
+            value=10;
+        }
+        else if(position==1)
+        {
+            value=11;
+        }
+        else
+        {
+            value=position;
+        }
+        return value;
+    }
+    
+    public void setvalue(int set)
+    {
+        value = set;
+    }
 }
